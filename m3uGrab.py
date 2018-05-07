@@ -11,7 +11,7 @@ def grab(uri):
         master = f.readlines()
     for line in master:
         if line.startswith('http'):
-            search = re.search('http:/(?:/([^/]+))+',line)
+            search = re.search('http.*?:/(?:/([^/]+))+',line)
             filename = search[1].replace('.m3u8','.')+'mpeg'
             with open(filename,'wb') as outFile:
                 child = urlopen(line).readlines()
